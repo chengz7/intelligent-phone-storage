@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>部队管理</title>
+    <!--<link href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.bootcss.com/bootstrap-table/1.15.4/bootstrap-table.css" rel="stylesheet">
+    需要说明的是，引入文件的方式最好是按这个顺序进行导入，否则可能会导致一些不必要的问题
+    
+    <script src="https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
+    <script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="https://cdn.bootcss.com/bootstrap-table/1.15.4/bootstrap-table.js"></script>-->
+    <link href="static/asset/bootstrap-3.3.7.min.css" rel="stylesheet">
+    <link href="static/asset/bootstrap-table.css" rel="stylesheet">
+    <script src="static/js/jquery-3.4.1.min.js"></script>
+    <script src="static/js/bootstrap-3.3.7.min.js"></script>
+    <script src="static/js/bootstrap-table.min.js"></script>
+    <script src="static/js/armyContoller1.js"></script>
+    <style>
+        .duiqi{text-align: right;display:inline-block;width:100px;}
+        .table-bordered th{text-align: center;}
+        .pagination{margin: 0%;}/*清除底部样式*/
+        a.disabled{cursor: not-allowed;}
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-inverse">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                
+                <a class="navbar-brand" href="#"><img src="static/img/logo.jpg" width='150' height='30'/></a>
+            </div>
+            <div class="collapse navbar-collapse" id="myNavbar">
+                <ul class="nav navbar-nav">
+                    <li><a href="#">系统设置</a></li>
+                    <li><a href="#">设备管理</a></li>
+                    <li><a href="administrator-armycontoller1.html">部队管理</a></li>
+                    <li><a href="administrator-phoneboxes-monitoring.html">手机柜管理</a></li>
+                    <li><a href="administrator-cardcontroller.html">磁卡管理</a></li>
+                    <li><a href="administrator-Recordsquerying.html">记录查询</a></li>
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> 退出</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <div class="container" style='text-align:center'>
+        <div class="panel panel-default">
+<!-- Default panel contents -->
+    <div class="panel-heading">
+        <h4 class="panel-title">中队表</h4>
+    </div>
+<!--<div class="panel-body">
+            
+</div>-->
+<!-- Table -->
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th width="">序号</th>
+                <th>中队名称</th>
+                <th>操作</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>1</td>
+                <td>张三</td>
+                <td>
+                    <button data-toggle="modal" data-target="#removeModal" class="btn btn-default btn-xs glyphicon glyphicon-remove">删除</button>
+                    <button class="btn btn-default btn-xs glyphicon glyphicon-edit">编辑</button>
+                    <a href="administrator-armycontoller2.html"><button class="btn btn-default btn-xs glyphicon glyphicon-editglyphicon glyphicon-arrow-right">转至班级</button></a>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+          
+    <div class="panel-footer">
+            <nav class="clearfix" aria-label="Page navigation">
+                <ul class="pagination pagination-sm pull-left">
+                    <button data-toggle="modal" data-target="#addModal" type="button" class="btn btn-primary">新增</button>
+                </ul>
+                <ul class="pagination pagination-sm pull-right">
+                    <li>
+                        <a href="#" aria-label="Previous">
+                        <span aria-hidden="true">&laquo;</span>
+                        </a>
+                        </li>
+                        <li><a href="#">1</a></li>
+                        <li><a href="#">/</a></li>
+                        <li><a href="#">3</a></li>
+                        <li>
+                        <a href="#" aria-label="Next">
+                        <span aria-hidden="true">&raquo;</span>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+    </div>
+</div>           
+</div>              
+
+<!--属性 aria-hidden="true" 用于保持模态窗口不可见，直到触发器被触发为止（比如点击在相关的按钮上）-->
+<!--data-toggle指以什么事件触发，常用的如collapse,modal,popover,tooltips等；
+data-target指事件的目标，一起使用就是代表data-target所指的元素以data-toggle指定的形式显示。-->
+<!--删除模态框（Modal） -->
+<div class="modal fade" id="removeModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+<div class="modal-dialog">
+<div class="modal-content">
+    <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+            <h4 class="modal-title" id="myModalLabel">删除</h4>
+    </div>
+    <div class="modal-body">
+    确认删除吗？
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+        <button type="button" class="btn btn-primary">确认删除</button>
+    </div>
+</div><!-- /.modal-content -->
+</div><!-- /.modal -->
+</div>
+<!-- 编辑模态框（Modal） -->
+<div class="modal fade" id="editModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+<div class="modal-dialog">
+<div class="modal-content">
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+    <h4 class="modal-title" id="myModalLabel">编辑</h4>
+    </div>
+     <div class="modal-body">
+        <form action="">
+            <span class="duiqi">序号:</span><input type="text" name="id" id="id"/><br><br>
+            <span class="duiqi">中队名称:</span><input type="text" name="name" id="name"/><br>
+                      
+        </form>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+        <button type="button" class="btn btn-primary">提交更改</button>
+    </div>
+</div><!-- /.modal-content -->
+</div><!-- /.modal -->
+</div> 
+<!--添加模态框（Modal） -->
+<div class="modal fade" id="addModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+<div class="modal-dialog">
+<div class="modal-content">
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <h4 class="modal-title" id="myModalLabel">添加</h4>
+    </div>
+    <div class="modal-body">
+        <form action="">
+            <span class="duiqi">序号:</span><input type="text" name="id" id="id"/><br><br>
+            <span class="duiqi">中队名称:</span><input type="text" name="name" id="name"/><br>
+                                  
+        </form>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+        <button type="button" class="btn btn-primary">提交更改</button>
+    </div>
+</div><!-- /.modal-content -->
+</div><!-- /.modal -->
+</div> 
+</body>
+</html>
